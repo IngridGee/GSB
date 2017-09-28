@@ -6,7 +6,7 @@
     $pdo = PdoGsb::getPdoGsb();
     $estConnecte = estConnecte();
     if(!isset($_REQUEST['uc']) || !$estConnecte){
-         $uc = 'connection';
+         $uc = 'connexion';
     }else{
         $uc = $_REQUEST['uc'];
     }
