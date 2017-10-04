@@ -297,5 +297,12 @@ class PdoGsb{
 		where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
 		PdoGsb::$monPdo->exec($req);
 	}
+        
+        /*public function visiteur(){
+            //liste des utilisateur qui sont des visiteur
+            $req= "select id from utilisateur where type=visiteur";
+            $laLigne = $res->fetch();
+            $idVisiteur=$laLigne->id;
+        }*/
 }
 ?>
