@@ -38,7 +38,7 @@ body{
 	background-color: white;
 	color: rgb(0,85,227);
 	float: left;
-	width: 14%;
+	width: 20%;
 }
 
 #contenu{
@@ -137,9 +137,6 @@ ul#menuList a:hover {
   text-align:right ;
   width : 95%;
   margin-top:0em;
-}
-form {
-  margin-bottom:1em;  
 }
 .corpsForm legend {
   font-weight:bold;
