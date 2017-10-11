@@ -2,8 +2,9 @@
     <div id="menuGauche">
      <div id="infosUtil">
     
-        <h2>
-        </h2>
+         <h2>
+             
+         </h2>
     
       </div>  
         <ul id="menuList">
@@ -18,5 +19,5 @@
               <a href="index.php?uc=connexion&action=deconnexion" title="Se déconnecter">Déconnexion</a>
            </li>
          </ul>
-        
+        <div id='trait'> </div>
     </div>

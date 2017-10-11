@@ -39,6 +39,7 @@ body{
 	color: rgb(0,85,227);
 	float: left;
 	width: 20%;
+        
 }
 
 #contenu{
@@ -46,9 +47,9 @@ body{
     padding: 1.3em;
     background-color: white;
     margin-top : 1.2em;
-
+margin-left: 18%;
 /* permet de fixer une hauteur mini sur les navigateurs modernes */
- 
+  min-height:27em;
 /* pour obtenir le m�me effet sur IE, sachant que si le contenu d�passe, il
 "poussera" la hauteur en ne respectant pas la norme. On se joue de ses lacunes
 */
@@ -121,7 +122,7 @@ ul#menuList a:hover {
 }
 
 /* Style des formulaires */
-.corpsForm {
+/*.corpsForm {
   border : solid 0.1em #000;
   border-bottom-width:1px;
   margin-bottom : 0em;
@@ -149,7 +150,7 @@ ul#menuList a:hover {
 	margin: 0;
 	padding: 0 .5em 0 0;
 	line-height: 1.8;	
-}
+}*/
 input, button, textarea, select{
   font-family:"Trebuchet MS", sans-serif;
   font-size : 1em;

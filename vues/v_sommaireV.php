@@ -2,9 +2,9 @@
     <div id="menuGauche">
      <div id="infosUtil">
     
-        <h2>
-            
-        </h2>
+         <h2>
+             
+         </h2>
     
       </div>  
         <ul id="menuList">
@@ -24,4 +24,4 @@
          </ul>
         
     </div>
-    
+<div id='trait'> </div>
