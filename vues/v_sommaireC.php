@@ -19,5 +19,7 @@
               <a href="index.php?uc=connexion&action=deconnexion" title="Se déconnecter">Déconnexion</a>
            </li>
          </ul>
-        <div id='trait'> </div>
     </div>
+<h1>
+    
+</h1>

@@ -39,15 +39,16 @@ body{
 	color: rgb(0,85,227);
 	float: left;
 	width: 20%;
-        
 }
-
+h1{
+    margin-top: 150px;
+}
 #contenu{
     border: none;
     padding: 1.3em;
     background-color: white;
     margin-top : 1.2em;
-margin-left: 18%;
+    margin-left: 25%;
 /* permet de fixer une hauteur mini sur les navigateurs modernes */
   min-height:27em;
 /* pour obtenir le m�me effet sur IE, sachant que si le contenu d�passe, il

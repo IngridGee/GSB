@@ -5,15 +5,22 @@ $mois = getMois(date("d/m/Y"));
 $action = $_REQUEST['action'];
     switch($action){
         case 'selectMois':{
-            $lesMois=$pdo->getLesMois();
-            // Afin de sélectionner par défaut le dernier mois dans la zone de liste
-            // on demande toutes les clés, et on prend la première,
-            // les mois étant triés décroissants
-            $lesCles = array_keys( $lesMois );
-            $moisASelectionner = $lesCles[0];
-            include("vues/v_listeMois.php");
-            break;
+            echo'<select name="mois">
+                <option>Janvier</option>
+                <option>Février</option>
+                <option>Mars</option>
+                <option>Avril</option>
+                <option>Mai</option>
+                <option>Juin</option>
+                <option>Juillet</option>
+                <option>Août</option>
+                <option>Spetembre</option>
+                <option>Octobbre</option>
+                <option>Novembre</option>
+                <option>Décembre</option>
+            </select>';
 
+                break;
         }
     }
 ?>

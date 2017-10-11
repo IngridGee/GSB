@@ -24,4 +24,6 @@
          </ul>
         
     </div>
-<div id='trait'> </div>
+<h1>
+    
+</h1>
