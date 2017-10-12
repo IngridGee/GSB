@@ -1,13 +1,13 @@
 ﻿ <div id="contenu">
       <h2>Liste des fiches de frais</h2>
       <h3>Visiteur à sélectionner : </h3>
-      <form action="index.php?uc=validationFrais&action=voirFiche" method="post">
+      <form action="index.php?uc=valideFrais&action=voirFiche" method="post">
       <div class="corpsForm">
          
       <p>
 	 
-        <label for="lstVisiteur" accesskey="n">Visiteur : </label>
-        <select id="lstVisiteur" name="lstVisiteur">
+        <label for="visiteur" accesskey="n">Visiteur : </label>
+        <select id="visiteur" name="visiteur">
             <?php
 			foreach ($lesVisiteur as $unVisiteur)
 			{
