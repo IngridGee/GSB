@@ -13,7 +13,7 @@
 			{
 			    $visiteur = $unVisiteur['nom'];
 				?>
-				<option selected value="<?php echo $visiteur ?>"><?php echo  $visiteur ?> </option>
+				<option selected value="<?php echo $visiteur ?>"><?php echo  $visiteur ?> <?php $_SESSION["id"]=$unVisiteur["id"]?></option>
 				<?php 
 			
 			}
