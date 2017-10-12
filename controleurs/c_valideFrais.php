@@ -14,7 +14,7 @@ $action = $_REQUEST['action'];
         }
         case 'supprimerFrais':{
 		$idFrais = $_REQUEST['idFrais'];
-                $pdo->supprimerFraisHorsForfait($idFrais);
+                $pdo->refuserFraisHorsForfait($idFrais);
 		break;
         }
     }

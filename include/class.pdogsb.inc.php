@@ -73,7 +73,7 @@ class PdoGsb{
 */
 	public function getLesFraisHorsForfait($idUtilisateur,$mois){
 	    $req = "select * from lignefraishorsforfait where lignefraishorsforfait.idVisiteur ='$idUtilisateur' 
-		and lignefraishorsforfait.mois = '$mois' ";	
+		and lignefraishorsforfait.mois = '$mois'";	
 		$res = PdoGsb::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		$nbLignes = count($lesLignes);
@@ -241,6 +241,10 @@ class PdoGsb{
 */
 	public function supprimerFraisHorsForfait($idFrais){
 		$req = "delete from lignefraishorsforfait where lignefraishorsforfait.id =$idFrais ";
+		PdoGsb::$monPdo->exec($req);
+	}
+        public function refuserFraisHorsForfait($idFrais){
+		$req = "update from lignefraishorsforfait set etat='R' where lignefraishorsforfait.id =$idFrais ";
 		PdoGsb::$monPdo->exec($req);
 	}
 /**
