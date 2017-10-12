@@ -1,7 +1,7 @@
 ﻿ <div id="contenu">
       <h2>Liste des fiches de frais</h2>
       <h3>Visiteur à sélectionner : </h3>
-      <form action="index.php?uc=validationFrais&action=voirFiche" method="post">
+      <form action="index.php?uc=valideFrais&action=voirFiche" method="post">
       <div class="corpsForm">
          
       <p>
