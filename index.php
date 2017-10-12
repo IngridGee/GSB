@@ -12,22 +12,16 @@
     }
     switch($uc){
             case 'connexion':{
-                    include("controleurs/c_connexion.php");
-                    break;
+                    include("controleurs/c_connexion.php");break;
             }
             case 'gererFrais' :{
-                    include("controleurs/c_gererFrais.php");
-                    break;
+                    include("controleurs/c_gererFrais.php");break;
             }
             case 'etatFrais' :{
-                    include("controleurs/c_etatFrais.php");
-                    break; 
+                    include("controleurs/c_etatFrais.php");break; 
             }
-            case 'choixFrais':
-                include 'controleurs/c_choixFrais.php';
-                break;
-            case 'valideFrais':
-                include 'controleurs/c_valideFrais.php';
+            case 'validationFrais':
+                include 'controleurs/c_validationFrais.php';
                 break;
     }
     include("vues/v_pied.php") ;

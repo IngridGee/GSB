@@ -1,13 +1,13 @@
 ﻿ <div id="contenu">
       <h2>Liste des fiches de frais</h2>
       <h3>Mois à sélectionner : </h3>
-      <form action="index.php?uc=choixFrais&action=voirVisiteur" method="post">
+      <form action="index.php?uc=validationFrais&action=voirVisiteur" method="post">
       <div class="corpsForm">
          
       <p>
 	 
-        <label for="mois" accesskey="n">Mois : </label>
-        <select id="mois" name="mois">
+        <label for="Mois" accesskey="n">Mois : </label>
+        <select id="Mois" name="Mois">
             <?php
 			foreach ($lesMois as $unMois)
 			{
