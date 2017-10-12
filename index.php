@@ -20,8 +20,8 @@
             case 'etatFrais' :{
                     include("controleurs/c_etatFrais.php");break; 
             }
-            case 'validationFrais':
-                include 'controleurs/c_validationFrais.php';
+            case 'choixFrais':
+                include 'controleurs/c_choixFrais.php';
                 break;
             case'valideFrais':
                 include 'controleurs/c_valideFrais.php';
