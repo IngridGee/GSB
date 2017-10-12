@@ -7,7 +7,7 @@ $numMois =substr( $mois,4,2);
 $action = $_REQUEST['action'];
     switch($action){
         case 'voirFiche':{
-            $nomVisiteur=$_REQUEST["visiteur"];
+            $nomVisiteur=$_SESSION["visiteur"];
             $pdo->getLesInfosFicheFrais($idVisiteur,$mois);
             include 'vues/v_voirFiche.php';
             break;
