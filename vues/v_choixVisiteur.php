@@ -12,15 +12,9 @@
 			foreach ($lesVisiteur as $unVisiteur)
 			{
 			    $visiteur = $unVisiteur['nom'];
-				if($mois == $visiteurASelectionner){
 				?>
 				<option selected value="<?php echo $visiteur ?>"><?php echo  $visiteur ?> </option>
 				<?php 
-				}
-				else{ ?>
-				<option value="<?php echo $visiteur ?>"><?php echo  $visiteur ?> </option>
-				<?php 
-				}
 			
 			}
            

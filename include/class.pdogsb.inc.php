@@ -270,7 +270,7 @@ class PdoGsb{
 	}
         
         public function getLesMois(){
-		$req = "select fichefrais.mois as mois from  fichefrais where  fichefrais.idEtat='CR' 
+		$req = "select fichefrais.mois as mois from  fichefrais where  fichefrais.idEtat='CL' 
 		order by fichefrais.mois desc ";
 		$res = PdoGsb::$monPdo->query($req);
 		$lesMois =array();
@@ -290,10 +290,10 @@ class PdoGsb{
 	}
         
         public function getLesVisiteur($mois){
-		$req = "select utilisateur.nom as nom , from  utilisateur  join fichefrais on utilisateur.id=idVisiteur where  fichefrais.idEtat='CR'";
+		$req = "select utilisateur.nom as nom , from  utilisateur  join fichefrais on utilisateur.id=idVisiteur where  fichefrais.idEtat='CL' and fichefrais.mois=$mois";
 		$res = PdoGsb::$monPdo->query($req);
 		$lesVisiteur =array();
-		$laLigne = $res->fetch();
+		$laLigne = $res;
 		while($laLigne != null)	{
 			$nom = $laLigne['nom'];
 			$lesVisiteur["$nom"]=array(

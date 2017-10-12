@@ -15,9 +15,7 @@ $action = $_REQUEST['action'];
             break;
         }
         case 'voirVisiteur':{
-            $lesVisiteur=$pdo->getLesVisiteur();
-            $lesCles = array_keys( $lesVisiteur );
-            $visiteurASelectionner = $lesCles[0];
+            $lesVisiteur=$pdo->getLesVisiteur($mois);
             include 'vues/v_choixVisiteur.php';
             break;
         }
