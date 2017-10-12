@@ -61,7 +61,7 @@ CREATE TABLE `fichefrais` (
 --
 
 INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`) VALUES
-('a131', '201709', 0, '0.00', '2017-09-21', 'CR');
+('a17', '201709', 0, '155', '2017-09-21', 'CL');
 
 -- --------------------------------------------------------
 
@@ -103,10 +103,10 @@ CREATE TABLE `lignefraisforfait` (
 --
 
 INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
-('a131', '201709', 'ETP', 0),
-('a131', '201709', 'KM', 0),
-('a131', '201709', 'NUI', 0),
-('a131', '201709', 'REP', 0);
+('a17', '201709', 'ETP', 100),
+('a17', '201709', 'KM', 0),
+('a17', '201709', 'NUI', 35),
+('a17', '201709', 'REP', 20);
 
 -- --------------------------------------------------------
 

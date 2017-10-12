@@ -249,8 +249,8 @@ class PdoGsb{
  * @param $idUtilisateur 
  * @return un tableau associatif de clé un mois -aaaamm- et de valeurs l'année et le mois correspondant 
 */
-	public function getLesMoisDisponibles($idUtilisateur){
-		$req = "select fichefrais.mois as mois from  fichefrais where fichefrais.idutilisateur ='$idUtilisateur'and idEtat = 'Ct' 
+	public function getLesMoisDisponibles($idVisiteur){
+		$req = "select fichefrais.mois as mois from  fichefrais where fichefrais.idutilisateur ='$idVisiteur' 
 		order by fichefrais.mois desc ";
 		$res = PdoGsb::$monPdo->query($req);
 		$lesMois =array();
@@ -267,6 +267,41 @@ class PdoGsb{
 			$laLigne = $res->fetch(); 		
 		}
 		return $lesMois;
+	}
+        
+        public function getLesMois(){
+		$req = "select fichefrais.mois as mois from  fichefrais where  fichefrais.idEtat='CL' 
+		order by fichefrais.mois desc ";
+		$res = PdoGsb::$monPdo->query($req);
+		$lesMois =array();
+		$laLigne = $res->fetch();
+		while($laLigne != null)	{
+			$mois = $laLigne['mois'];
+			$numAnnee =substr( $mois,0,4);
+			$numMois =substr( $mois,4,2);
+			$lesMois["$mois"]=array(
+                            "mois"=>"$mois",
+                            "numAnnee"  => "$numAnnee",
+                            "numMois"  => "$numMois"
+             );
+			$laLigne = $res->fetch(); 		
+		}
+		return $lesMois;
+	}
+        
+        public function getLesVisiteur($mois){
+		$req = "select utilisateur.nom as nom  from  utilisateur  join fichefrais on utilisateur.id=idVisiteur where  fichefrais.idEtat='CL' and fichefrais.mois=$mois";
+		$res = PdoGsb::$monPdo->query($req);
+		$lesVisiteur =array();
+		$laLigne =$res->fetch(PDO::FETCH_OBJ);
+		while($laLigne != null)	{
+			$nom = $laLigne->nom;
+			$lesVisiteur["$nom"]=array(
+                            "nom"=>"$nom"
+             );
+			$laLigne = $res->fetch(); 		
+		}
+		return $lesVisiteur;
 	}
 /**
  * Retourne les informations d'une fiche de frais d'un visiteur pour un mois donné
