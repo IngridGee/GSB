@@ -344,5 +344,13 @@ class PdoGsb{
             $laLigne = $res->fetch();
             $idVisiteur=$laLigne->id;
         }*/
+        
+        
+        public function majEtatVlideFrais($idUtlisateur, $idEtat, $nbJustificatif){
+            
+            $req = "update fichefrais set idEtat = 'VA' where fichefrais.id = '$idFrais' ";
+            PdoGsb::$monPdo->exec($req);
+        }
 }
+	      
 ?>
