@@ -290,12 +290,12 @@ class PdoGsb{
 	}
         
         public function getLesVisiteur($mois){
-		$req = "select utilisateur.nom as nom , from  utilisateur  join fichefrais on utilisateur.id=idVisiteur where  fichefrais.idEtat='CL' and fichefrais.mois=$mois";
+		$req = "select utilisateur.nom as nom  from  utilisateur  join fichefrais on utilisateur.id=idVisiteur where  fichefrais.idEtat='CL' and fichefrais.mois=$mois";
 		$res = PdoGsb::$monPdo->query($req);
 		$lesVisiteur =array();
-		$laLigne = $res;
+		$laLigne =$res->fetch(PDO::FETCH_OBJ);
 		while($laLigne != null)	{
-			$nom = $laLigne['nom'];
+			$nom = $laLigne->nom;
 			$lesVisiteur["$nom"]=array(
                             "nom"=>"$nom"
              );

@@ -15,6 +15,7 @@ $action = $_REQUEST['action'];
             break;
         }
         case 'voirVisiteur':{
+            $mois=$_REQUEST['Mois'];
             $lesVisiteur=$pdo->getLesVisiteur($mois);
             include 'vues/v_choixVisiteur.php';
             break;

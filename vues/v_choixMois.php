@@ -6,8 +6,8 @@
          
       <p>
 	 
-        <label for="lstMois" accesskey="n">Mois : </label>
-        <select id="lstMois" name="lstMois">
+        <label for="Mois" accesskey="n">Mois : </label>
+        <select id="Mois" name="Mois">
             <?php
 			foreach ($lesMois as $unMois)
 			{
