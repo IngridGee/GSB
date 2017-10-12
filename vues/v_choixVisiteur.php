@@ -6,8 +6,8 @@
          
       <p>
 	 
-        <label for="lstVisiteur" accesskey="n">Visiteur : </label>
-        <select id="lstVisiteur" name="lstVisiteur">
+        <label for="visiteur" accesskey="n">Visiteur : </label>
+        <select id="visiteur" name="visiteur">
             <?php
 			foreach ($lesVisiteur as $unVisiteur)
 			{

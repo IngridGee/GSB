@@ -23,6 +23,9 @@
             case 'validationFrais':
                 include 'controleurs/c_validationFrais.php';
                 break;
+            case'valideFrais':
+                include 'controleurs/c_valideFrais.php';
+                break;
     }
     include("vues/v_pied.php") ;
 ?>
