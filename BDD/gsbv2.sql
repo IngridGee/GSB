@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
+-- version 4.1.4
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 28 Septembre 2017 à 14:20
--- Version du serveur :  5.7.11
--- Version de PHP :  5.6.19
+-- Généré le :  Jeu 12 Octobre 2017 à 15:50
+-- Version du serveur :  5.6.15-log
+-- Version de PHP :  5.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données :  `gsbv2`
@@ -26,9 +26,10 @@ SET time_zone = "+00:00";
 -- Structure de la table `etat`
 --
 
-CREATE TABLE `etat` (
+CREATE TABLE IF NOT EXISTS `etat` (
   `id` char(2) NOT NULL,
-  `libelle` varchar(30) DEFAULT NULL
+  `libelle` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -47,13 +48,15 @@ INSERT INTO `etat` (`id`, `libelle`) VALUES
 -- Structure de la table `fichefrais`
 --
 
-CREATE TABLE `fichefrais` (
+CREATE TABLE IF NOT EXISTS `fichefrais` (
   `idVisiteur` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `nbJustificatifs` int(11) DEFAULT NULL,
   `montantValide` decimal(10,2) DEFAULT NULL,
   `dateModif` date DEFAULT NULL,
-  `idEtat` char(2) DEFAULT 'CR'
+  `idEtat` char(2) DEFAULT 'CR',
+  PRIMARY KEY (`idVisiteur`,`mois`),
+  KEY `idEtat` (`idEtat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -61,7 +64,8 @@ CREATE TABLE `fichefrais` (
 --
 
 INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`) VALUES
-('a17', '201709', 0, '155', '2017-09-21', 'CL');
+('a17', '201709', 0, '155.00', '2017-09-21', 'CL'),
+('a17', '201710', 0, '0.00', '2017-10-12', 'CR');
 
 -- --------------------------------------------------------
 
@@ -69,10 +73,11 @@ INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValid
 -- Structure de la table `fraisforfait`
 --
 
-CREATE TABLE `fraisforfait` (
+CREATE TABLE IF NOT EXISTS `fraisforfait` (
   `id` char(3) NOT NULL,
   `libelle` char(20) DEFAULT NULL,
-  `montant` decimal(5,2) DEFAULT NULL
+  `montant` decimal(5,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -91,11 +96,13 @@ INSERT INTO `fraisforfait` (`id`, `libelle`, `montant`) VALUES
 -- Structure de la table `lignefraisforfait`
 --
 
-CREATE TABLE `lignefraisforfait` (
+CREATE TABLE IF NOT EXISTS `lignefraisforfait` (
   `idVisiteur` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `idFraisForfait` char(3) NOT NULL,
-  `quantite` int(11) DEFAULT NULL
+  `quantite` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idVisiteur`,`mois`,`idFraisForfait`),
+  KEY `idFraisForfait` (`idFraisForfait`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -103,10 +110,14 @@ CREATE TABLE `lignefraisforfait` (
 --
 
 INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
-('a17', '201709', 'ETP', 100),
+('a17', '201709', 'ETP', 110),
 ('a17', '201709', 'KM', 0),
 ('a17', '201709', 'NUI', 35),
-('a17', '201709', 'REP', 20);
+('a17', '201709', 'REP', 20),
+('a17', '201710', 'ETP', 100),
+('a17', '201710', 'KM', 1),
+('a17', '201710', 'NUI', 50),
+('a17', '201710', 'REP', 30);
 
 -- --------------------------------------------------------
 
@@ -114,14 +125,24 @@ INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quanti
 -- Structure de la table `lignefraishorsforfait`
 --
 
-CREATE TABLE `lignefraishorsforfait` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `lignefraishorsforfait` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `idVisiteur` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `libelle` varchar(100) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `montant` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `montant` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idVisiteur` (`idVisiteur`,`mois`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `lignefraishorsforfait`
+--
+
+INSERT INTO `lignefraishorsforfait` (`id`, `idVisiteur`, `mois`, `libelle`, `date`, `montant`) VALUES
+(1, 'a17', '201710', 'Repas docteur', '2017-10-01', '100.00'),
+(2, 'a17', '201709', 'match avec docteur', '2017-09-06', '250.00');
 
 -- --------------------------------------------------------
 
@@ -129,7 +150,7 @@ CREATE TABLE `lignefraishorsforfait` (
 -- Structure de la table `utilisateur`
 --
 
-CREATE TABLE `utilisateur` (
+CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id` char(4) NOT NULL,
   `nom` char(30) DEFAULT NULL,
   `prenom` char(30) DEFAULT NULL,
@@ -139,7 +160,8 @@ CREATE TABLE `utilisateur` (
   `cp` char(5) DEFAULT NULL,
   `ville` char(30) DEFAULT NULL,
   `dateEmbauche` date DEFAULT NULL,
-  `type` set('visiteur','comptable') NOT NULL
+  `type` set('visiteur','comptable') NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -176,58 +198,6 @@ INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp
 ('f4', 'Gest', 'Alain', 'agest', '8167f1d92b7c2666aaf0d6f77cbc761d', '30 avenue de la mer', '13025', 'Berre', '1985-11-01', '');
 
 --
--- Index pour les tables exportées
---
-
---
--- Index pour la table `etat`
---
-ALTER TABLE `etat`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `fichefrais`
---
-ALTER TABLE `fichefrais`
-  ADD PRIMARY KEY (`idVisiteur`,`mois`),
-  ADD KEY `idEtat` (`idEtat`);
-
---
--- Index pour la table `fraisforfait`
---
-ALTER TABLE `fraisforfait`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `lignefraisforfait`
---
-ALTER TABLE `lignefraisforfait`
-  ADD PRIMARY KEY (`idVisiteur`,`mois`,`idFraisForfait`),
-  ADD KEY `idFraisForfait` (`idFraisForfait`);
-
---
--- Index pour la table `lignefraishorsforfait`
---
-ALTER TABLE `lignefraishorsforfait`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idVisiteur` (`idVisiteur`,`mois`);
-
---
--- Index pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `lignefraishorsforfait`
---
-ALTER TABLE `lignefraishorsforfait`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- Contraintes pour les tables exportées
 --
 
@@ -242,14 +212,14 @@ ALTER TABLE `fichefrais`
 -- Contraintes pour la table `lignefraisforfait`
 --
 ALTER TABLE `lignefraisforfait`
-  ADD CONSTRAINT `lignefraisforfait_ibfk_1` FOREIGN KEY (`idVisiteur`,`mois`) REFERENCES `fichefrais` (`idVisiteur`, `mois`),
+  ADD CONSTRAINT `lignefraisforfait_ibfk_1` FOREIGN KEY (`idVisiteur`, `mois`) REFERENCES `fichefrais` (`idVisiteur`, `mois`),
   ADD CONSTRAINT `lignefraisforfait_ibfk_2` FOREIGN KEY (`idFraisForfait`) REFERENCES `fraisforfait` (`id`);
 
 --
 -- Contraintes pour la table `lignefraishorsforfait`
 --
 ALTER TABLE `lignefraishorsforfait`
-  ADD CONSTRAINT `lignefraishorsforfait_ibfk_1` FOREIGN KEY (`idVisiteur`,`mois`) REFERENCES `fichefrais` (`idVisiteur`, `mois`);
+  ADD CONSTRAINT `lignefraishorsforfait_ibfk_1` FOREIGN KEY (`idVisiteur`, `mois`) REFERENCES `fichefrais` (`idVisiteur`, `mois`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,6 +1,6 @@
 <?php
 include("vues/v_sommaireV.php");
-$idUtilisateur = $_SESSION['idUtilisateur'];
+$idVisiteur = $_SESSION['idUtilisateur'];
 $mois = getMois(date("d/m/Y"));
 $numAnnee =substr( $mois,0,4);
 $numMois =substr( $mois,4,2);
