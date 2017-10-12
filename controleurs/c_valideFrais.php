@@ -12,6 +12,11 @@ $action = $_REQUEST['action'];
             include 'vues/v_voirFiche.php';
             break;
         }
+        case 'supprimerFrais':{
+		$idFrais = $_REQUEST['idFrais'];
+                $pdo->supprimerFraisHorsForfait($idFrais);
+		break;
+        }
     }
 
 ?>

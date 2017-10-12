@@ -24,7 +24,6 @@
         <div class="piedForm">
             <p>
                 <input id="ok" type="submit" value="Valider" size="20" />
-                <input id="modifier" type="submit" value="Modification" size="20" />
                 <input id="annuler" type="reset" value="Effacer" size="20" />
             </p> 
         </div>

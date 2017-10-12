@@ -21,8 +21,8 @@
                 <td> <?php echo $date ?></td>
                 <td><?php echo $libelle ?></td>
                 <td><?php echo $montant ?></td>
-                <td><a href="index.php?uc=gererFrais&action=supprimerFrais&idFrais=<?php echo $id ?>" 
-		onclick="return confirm('Voulez-vous vraiment supprimer ce frais?');">Supprimer ce frais</a></td>
+                <td><a href="index.php?uc=valideFrais&action=supprimerFrais&idFrais=<?php echo $id ?>" 
+                       onclick="return confirm('Voulez-vous vraiment supprimer ce frais?');"><img src="images/supprime_icon.gif"></a></td>
              </tr>
 	<?php		 
                     }
