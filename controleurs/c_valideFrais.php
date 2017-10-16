@@ -13,10 +13,19 @@ $action = $_REQUEST['action'];
             break;
         }
         case 'supprimerFrais':{
-		$idFrais = $_REQUEST['idFrais'];
-                $pdo->refuserFraisHorsForfait($idFrais);
-		break;
+            $idFrais = $_REQUEST['idFrais'];
+            $pdo->refuserFraisHorsForfait($idFrais);
+            break;
+        }
+        case 'reportFrais':{
+            $idFrais = $_REQUEST['idFrais'];
+            $pdo->reporter($idFrais);
+            break;
+        }
+        case 'rembourser':{
+            $idFrais = $_REQUEST['idFrais'];
+            $pdo->rembourser($idFrais);
+            break;
         }
     }
-
 ?>

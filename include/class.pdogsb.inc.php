@@ -73,7 +73,7 @@ class PdoGsb{
 */
 	public function getLesFraisHorsForfait($idUtilisateur,$mois){
 	    $req = "select * from lignefraishorsforfait where lignefraishorsforfait.idVisiteur ='$idUtilisateur' 
-		and lignefraishorsforfait.mois = '$mois'";	
+		and lignefraishorsforfait.mois = '$mois' and etat='H'";	
 		$res = PdoGsb::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		$nbLignes = count($lesLignes);
@@ -83,6 +83,11 @@ class PdoGsb{
 		}
 		return $lesLignes; 
 	}
+        
+        public function reporter($idFrais){
+            $req="update from fraishorsforfait set mois+=1 where lignefraishorsforfait.id='$idFrais'";
+            $res = PdoGsb::$monPdo->query($req);
+        }
 /**
  * Retourne le nombre de justificatif d'un visiteur pour un mois donné
  
