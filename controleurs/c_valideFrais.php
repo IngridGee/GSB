@@ -24,7 +24,7 @@ $action = $_REQUEST['action'];
         }
         case 'rembourser':{
             $idFrais = $_REQUEST['idFrais'];
-            $pdo->rembourser($idFrais);
+            $pdo->majEtatVlideFrais($idFrais);
             break;
         }
     }

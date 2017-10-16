@@ -88,6 +88,7 @@ class PdoGsb{
             $req="update from fraishorsforfait set mois+=1 where lignefraishorsforfait.id='$idFrais'";
             $res = PdoGsb::$monPdo->query($req);
         }
+        
 /**
  * Retourne le nombre de justificatif d'un visiteur pour un mois donné
  
@@ -351,7 +352,7 @@ class PdoGsb{
         }*/
         
         
-        public function majEtatVlideFrais($idUtlisateur, $idEtat, $nbJustificatif){
+        public function majEtatVlideFrais($idFrais){
             
             $req = "update fichefrais set idEtat = 'VA' where fichefrais.id = '$idFrais' ";
             PdoGsb::$monPdo->exec($req);

@@ -1,5 +1,4 @@
-<div id="contenu">
-    <form method="POST"  action="index.php?uc=valideFrais&action=rembourser">
+<form method="POST"  action="index.php?uc=valideFrais&action=rembourser">
         <fieldset>
             <legend>Eléments forfaitisés</legend>
             <?php
@@ -28,4 +27,3 @@
             </p> 
         </div>
     </form>
-</div>

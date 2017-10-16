@@ -48,7 +48,7 @@ h1{
     padding: 1.3em;
     background-color: white;
     margin-top : 1.2em;
-    margin-left: 25%;
+    margin-left: 20%;
 /* permet de fixer une hauteur mini sur les navigateurs modernes */
   min-height:27em;
 /* pour obtenir le m�me effet sur IE, sachant que si le contenu d�passe, il
@@ -159,7 +159,7 @@ input, button, textarea, select{
 
 form {
  background-color:#FAFAFA;
- width:550px;
+  width:550px;
   margin:auto;
   margin-top:30px;
   background:#FFF;
@@ -168,7 +168,7 @@ form {
   border: solid 1px #3490BF;
   -moz-border-radius:10px;
   -webkit-border-radius:10px;
-  border-radius:10px;
+   border-radius:10px;
 
  }
 fieldset {
