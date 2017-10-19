@@ -340,6 +340,7 @@ class PdoGsb{
         public function majEtatVlideFrais($idFrais){
             
             $req = "update fichefrais set idEtat = 'VA' where fichefrais.id = '$idFrais' ";
+            $req1 = "update lignefraisforfais set quantite = $quantite where idVisiteur = $idVisiteur and mois = $mois and idFraisForfais = $idFrais";
             PdoGsb::$monPdo->exec($req);
         }
 }
