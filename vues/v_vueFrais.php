@@ -2,11 +2,12 @@
         <fieldset>
             <legend>Eléments forfaitisés</legend>
             <?php
+            $r=0;
                 foreach ($lesFraisForfait as $unFrais)
                 {
-                    $idFrais = $unFrais['idfrais'];
-                    $libelle = $unFrais['libelle'];
-                    $quantite = $unFrais['quantite'];
+                    $_SESSION["idFrais"][$r] =$idFrais= $unFrais['idfrais'];
+                    $_SESSION["libelle"][$r]=$libelle = $unFrais['libelle'];
+                    $_SESSION["quantite"][$r]=$quantite = $unFrais['quantite'];
             ?>
                 <p>
                     <label for="idFrais"><?php echo $libelle ?></label>
@@ -14,7 +15,8 @@
                 </p>
 
             <?php
-                    }
+                $r++;    
+                }
             ?>
 
 
