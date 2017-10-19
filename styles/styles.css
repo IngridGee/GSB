@@ -195,12 +195,12 @@ label.inline {
  margin-right:40px;
  }
 input[type=text], input[type=password], input[type=email],textarea, select, option {
- background-color:#FFF;
- width:250px;
-  height:20px;
-  line-height:20px;
-  font-weight:bold;
-  color:#9A9591;
+background-color:#FFF;
+width:250px;
+height:25px;
+line-height:20px;
+font-weight:bold;
+color:#9A9591;
 
  }
 input[type=text],input[type=password], input[type=email], textarea, select {

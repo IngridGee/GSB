@@ -22,7 +22,7 @@
                 <td><?php echo $montant ?></td>
                 <td><a href="index.php?uc=valideFrais&action=supprimerFrais&idFrais=<?php echo $id ?>" 
                        onclick="return confirm('Voulez-vous vraiment refuser ce frais?');"><img src="images/supprime_icon.gif"></a></td>
-                       <td><a href="index.php?uc=valideFrais&action=reporteFrais&idFrais=<?php echo $id ?>" >reporter le frais</a></td>
+                       <td><a href="index.php?uc=valideFrais&action=reportFrais&idFrais=<?php echo $id ?>" >reporter le frais</a></td>
             </tr>
 	<?php		 
                     }

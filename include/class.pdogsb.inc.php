@@ -85,7 +85,7 @@ class PdoGsb{
 	}
         
         public function reporter($idFrais){
-            $req="update from fraishorsforfait set mois+=1 where lignefraishorsforfait.id='$idFrais'";
+            $req="update from fraishorsforfait set mois=mois+1 where lignefraishorsforfait.id='$idFrais'";
             $res = PdoGsb::$monPdo->query($req);
         }
         
@@ -336,22 +336,7 @@ class PdoGsb{
  * Modifie le champ idEtat et met la date de modif à aujourd'hui
  * @param $idUtilisateur 
  * @param $mois sous la forme aaaamm
- */
- 
-	public function majEtatFicheFrais($idUtilisateur,$mois,$etat){
-		$req = "update ficheFrais set idEtat = '$etat', dateModif = now() 
-		where fichefrais.idVisiteur ='$idUtilisateur' and fichefrais.mois = '$mois'";
-		PdoGsb::$monPdo->exec($req);
-	}
-        
-        /*public function visiteur(){
-            //liste des utilisateur qui sont des visiteur
-            $req= "select id from utilisateur where type=visiteur";
-            $laLigne = $res->fetch();
-            $idVisiteur=$laLigne->id;
-        }*/
-        
-        
+ */     
         public function majEtatVlideFrais($idFrais){
             
             $req = "update fichefrais set idEtat = 'VA' where fichefrais.id = '$idFrais' ";
