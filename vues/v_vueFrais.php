@@ -6,7 +6,7 @@
                 foreach ($lesFraisForfait as $unFrais)
                 {
                     $_SESSION["idFrais"][$r] =$idFrais= $unFrais['idfrais'];
-                    $_SESSION["libelle"][$r]=$libelle = $unFrais['libelle'];
+                    $libelle = $unFrais['libelle'];
                     $_SESSION["quantite"][$r]=$quantite = $unFrais['quantite'];
             ?>
                 <p>

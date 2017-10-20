@@ -337,10 +337,15 @@ class PdoGsb{
  * @param $idUtilisateur 
  * @param $mois sous la forme aaaamm
  */     
-        public function majEtatVlideFrais($idFrais){
+        public function majEtatVlideFrais($idVisiteur,$mois){
+            for ($r=0;$r<4;$r++){
+                $idFrais=$_SESSION["idFrais"][$r];
+                $quantite=$_SESSION["quantite"][$r];
+                $req1 = "update lignefraisforfais set quantite = $quantite where idVisiteur = $idVisiteur and mois = $mois and idFraisForfais = $idFrais";
             
+            }
+            PdoGsb::$monPdo->exec($req1);
             $req = "update fichefrais set idEtat = 'VA' where fichefrais.id = '$idFrais' ";
-            $req1 = "update lignefraisforfais set quantite = $quantite where idVisiteur = $idVisiteur and mois = $mois and idFraisForfais = $idFrais";
             PdoGsb::$monPdo->exec($req);
         }
 }

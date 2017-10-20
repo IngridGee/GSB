@@ -24,8 +24,8 @@ $action = $_REQUEST['action'];
         }
         case 'rembourser':{
             $idFrais = $_REQUEST['idFrais'];
-            $pdo->majEtatVlideFrais($idFrais);
-            
+            $pdo->majEtatVlideFrais($idVisiteur,$mois);
+            header("location:v_vueFrais.php");
             break;
         }
     }
