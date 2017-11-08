@@ -85,7 +85,7 @@ class PdoGsb{
 	}
         
         public function reporter($idFrais){
-            $req="update from fraishorsforfait set mois=mois+1 where lignefraishorsforfait.id='$idFrais'";
+            $req="update from lignefraishorsforfait set mois=mois+1 where lignefraishorsforfait.id='$idFrais'";
             $res = PdoGsb::$monPdo->query($req);
         }
         
