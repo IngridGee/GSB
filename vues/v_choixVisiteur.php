@@ -12,10 +12,16 @@
 			foreach ($lesVisiteur as $unVisiteur)
 			{
 			    $visiteur = $unVisiteur['nom'];
+                            if($mois == $moisASelectionner){
 				?>
 				<option selected name="visiteur" value="<?php echo $_SESSION["visiteur"]=$visiteur ?>"><?php echo  $visiteur ?> <?php $_SESSION["id"]=$unVisiteur["id"]?></option>
 				<?php 
-			
+				}
+				else{ ?>
+				<option name="visiteur" value="<?php echo $_SESSION["visiteur"]=$visiteur ?>"><?php echo  $visiteur ?> </option>
+				<?php 
+				}
+				
 			}
            
 		   ?>    

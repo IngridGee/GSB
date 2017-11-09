@@ -245,12 +245,9 @@ class PdoGsb{
  
  * @param $idFrais 
 */
-	public function supprimerFraisHorsForfait($idFrais){
-		$req = "delete from lignefraishorsforfait where lignefraishorsforfait.id =$idFrais ";
-		PdoGsb::$monPdo->exec($req);
-	}
+	
         public function refuserFraisHorsForfait($idFrais){
-		$req = "update from lignefraishorsforfait set etat='R' where lignefraishorsforfait.id =$idFrais ";
+		$req = "update from lignefraishorsforfait set libelle='supprimer'.libelle where lignefraishorsforfait.id =$idFrais ";
 		PdoGsb::$monPdo->exec($req);
 	}
 /**
@@ -301,10 +298,11 @@ class PdoGsb{
         
         public function getLesVisiteur($mois){
 		$req = "select utilisateur.nom as nom, utilisateur.id as id  from  utilisateur  join fichefrais on utilisateur.id=idVisiteur where  fichefrais.idEtat='CL' and fichefrais.mois=$mois";
-		$res = PdoGsb::$monPdo->query($req);
+		//echo $req;
+                $res = PdoGsb::$monPdo->query($req);
 		$lesVisiteur =array();
-		$laLigne =$res->fetch(PDO::FETCH_OBJ);
-		while($laLigne != null)	{
+		$laLigne =$res->fetchAll();
+		/*while($laLigne != null)	{
 			$nom = $laLigne->nom;
                         $id=$laLigne->id;
 			$lesVisiteur["$nom"]=array(
@@ -312,8 +310,9 @@ class PdoGsb{
                             "id"=>"$id"
              );
 			$laLigne = $res->fetch(); 		
-		}
-		return $lesVisiteur;
+		}*/
+                print_r($laLigne);
+		return $laLigne;
 	}
 /**
  * Retourne les informations d'une fiche de frais d'un visiteur pour un mois donné
