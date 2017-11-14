@@ -1,6 +1,6 @@
 
     <div id="contenu">
-      <h2>Fiche de frais du mois <?php echo $numMois."-".$numAnnee ?> de <?php echo $nomVisiteur?></h2>
+      <h2>Fiche de frais du mois <?php echo $numMois."-".$numAnnee ?> de <?php echo $nom?></h2>
 
 			<?php   
                             $lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$mois);

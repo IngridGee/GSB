@@ -9,18 +9,20 @@
         <label for="visiteur" accesskey="n">Visiteur : </label>
         <select id="visiteur" name="visiteur">
             <?php
-			foreach ($lesVisiteur as $unVisiteur)
-			{
-			    $visiteur = $unVisiteur['nom'];
-                            if($mois == $moisASelectionner){
-				?>
-				<option selected name="visiteur" value="<?php echo $_SESSION["visiteur"]=$visiteur ?>"><?php echo  $visiteur ?> <?php $_SESSION["id"]=$unVisiteur["id"]?></option>
-				<?php 
-				}
-				else{ ?>
-				<option name="visiteur" value="<?php echo $_SESSION["visiteur"]=$visiteur ?>"><?php echo  $visiteur ?> </option>
-				<?php 
-				}
+                foreach ($lesVisiteur as $unVisiteur)
+                {
+                    $id = $unVisiteur['id'];
+                    $visiteur = $unVisiteur['nom'];
+                    if($visiteur == $visiteurASelectionner){
+                    ?>
+                    <option selected name="visiteur" value="<?php $visiteur?>"><?php echo $visiteur?></option>
+                            <?php 
+                            }
+                            else{ ?>
+                             <option name="visiteur" value="<?php $visiteur?>"><?php echo $visiteur?></option>
+                            <?php 
+                            }
+                                
 				
 			}
            
@@ -31,6 +33,7 @@
       </div>
       <div class="piedForm">
       <p>
+        
         <input id="ok" type="submit" value="Valider" size="20" />
         <input id="annuler" type="reset" value="Effacer" size="20" />
       </p> 

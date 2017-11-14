@@ -296,23 +296,23 @@ class PdoGsb{
 		return $lesMois;
 	}
         
-        public function getLesVisiteur($mois){
+        public function getLesVisiteurs($mois){
 		$req = "select utilisateur.nom as nom, utilisateur.id as id  from  utilisateur  join fichefrais on utilisateur.id=idVisiteur where  fichefrais.idEtat='CL' and fichefrais.mois=$mois";
-		//echo $req;
-                $res = PdoGsb::$monPdo->query($req);
-		$lesVisiteur =array();
-		$laLigne =$res->fetchAll();
-		/*while($laLigne != null)	{
-			$nom = $laLigne->nom;
-                        $id=$laLigne->id;
-			$lesVisiteur["$nom"]=array(
-                            "nom"=>"$nom",
-                            "id"=>"$id"
+		
+		$res = PdoGsb::$monPdo->query($req);
+		$lesVisiteurs =array();
+		$laLigne = $res->fetch();
+		while($laLigne != null)	{
+                    $id = $laLigne [ 'id'];
+                    $nom = $laLigne ['nom'];
+                    $lesVisiteurs["$nom"]=array(
+                     "id"=>"$id",
+		     "nom"=>"$nom",
+			
              );
 			$laLigne = $res->fetch(); 		
-		}*/
-                print_r($laLigne);
-		return $laLigne;
+		}
+		return $lesVisiteurs;
 	}
 /**
  * Retourne les informations d'une fiche de frais d'un visiteur pour un mois donné
@@ -336,7 +336,7 @@ class PdoGsb{
  * @param $idUtilisateur 
  * @param $mois sous la forme aaaamm
  */     
-        public function majEtatVlideFrais($idVisiteur,$mois){
+        public function majEtatValideFrais($idVisiteur,$mois){
             for ($r=0;$r<4;$r++){
                 $idFrais=$_SESSION["idFrais"][$r];
                 $quantite=$_SESSION["quantite"][$r];

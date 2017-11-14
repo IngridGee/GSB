@@ -1,13 +1,15 @@
 <?php
 include("vues/v_sommaireC.php");
-$idVisiteur = $_SESSION['id'];
+//$idVisiteur = $_SESSION['id'];
 $mois=$_SESSION["mois"];
 $numAnnee =substr( $mois,0,4);
 $numMois =substr( $mois,4,2);
 $action = $_REQUEST['action'];
     switch($action){
         case 'voirFiche':{
-            $nomVisiteur=$_SESSION["visiteur"];
+            $nom=$_REQUEST['nom'];
+            $idVisiteur =$_REQUEST["id"];
+            echo $idVisiteur;
             $pdo->getLesInfosFicheFrais($idVisiteur,$mois);
             include 'vues/v_voirFiche.php';
             break;

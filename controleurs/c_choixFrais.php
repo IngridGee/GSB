@@ -16,7 +16,7 @@ $action = $_REQUEST['action'];
         }
         case 'voirVisiteur':{
             $_SESSION["mois"]=$mois=$_REQUEST['mois'];
-            $lesVisiteur=$pdo->getLesVisiteur($mois);
+            $lesVisiteur=$pdo->getLesVisiteurs($mois);
             //print_r($lesVisiteur);
             $_SESSION["idVisiteur"]=$_SESSION['id'];
             include 'vues/v_choixVisiteur.php';
