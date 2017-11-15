@@ -60,6 +60,14 @@ class PdoGsb{
 		$ligne = $rs->fetch();
 		return $ligne;
 	}
+        
+        public function getNom($id){
+		$req = "select  nom from utilisateur 
+		where utilisateur.id='$id'";
+		$rs = PdoGsb::$monPdo->query($req);
+		$ligne = $rs->fetch();
+		return $ligne;
+	}
 /**
  * Retourne sous forme d'un tableau associatif toutes les lignes de frais hors forfait
  * concernées par les deux arguments

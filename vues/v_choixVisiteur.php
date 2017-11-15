@@ -15,11 +15,11 @@
                     $visiteur = $unVisiteur['nom'];
                     if($visiteur == $visiteurASelectionner){
                     ?>
-                    <option selected name="visiteur" value="<?php $visiteur?>"><?php echo $visiteur?></option>
+                    <option selected name="id" value="<?php $id?>"><?php echo $visiteur?></option>
                             <?php 
                             }
                             else{ ?>
-                             <option name="visiteur" value="<?php $visiteur?>"><?php echo $visiteur?></option>
+                             <option name="id" value="<?php $id?>"><?php echo $visiteur?></option>
                             <?php 
                             }
                                 
